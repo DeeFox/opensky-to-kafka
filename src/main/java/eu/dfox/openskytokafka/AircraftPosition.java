@@ -74,4 +74,18 @@ public class AircraftPosition {
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return "AircraftPosition{" +
+            "icao24='" + icao24 + '\'' +
+            ", callsign='" + callsign + '\'' +
+            ", velocity=" + velocity +
+            ", heading=" + heading +
+            ", verticalRate=" + verticalRate +
+            ", onGround=" + onGround +
+            ", longitude=" + longitude +
+            ", latitude=" + latitude +
+            '}';
+    }
 }

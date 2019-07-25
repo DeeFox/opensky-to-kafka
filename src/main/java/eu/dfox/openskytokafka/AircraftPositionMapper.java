@@ -1,5 +1,7 @@
 package eu.dfox.openskytokafka;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.dfox.openskytokafka.opensky.StateVector;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -8,6 +10,8 @@ import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class AircraftPositionMapper {
+
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public AircraftPosition toAircraftPosition(StateVector stateVector) {
         AircraftPosition aircraftPosition = new AircraftPosition();
@@ -25,6 +29,16 @@ public class AircraftPositionMapper {
         return stateVectors.stream()
                            .map(stateVector -> toAircraftPosition(stateVector))
                            .collect(Collectors.toList());
+    }
+
+    public String toJsonString(AircraftPosition position) {
+        String jsonString = "";
+        try {
+            jsonString = objectMapper.writeValueAsString(position);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
     }
 
 
