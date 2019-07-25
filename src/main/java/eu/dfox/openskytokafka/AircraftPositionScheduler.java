@@ -23,7 +23,7 @@ public class AircraftPositionScheduler {
     @Outgoing("positions")
     public Flowable<String> generate() {
         LOGGER.info("generate called");
-        return Flowable.interval(10, TimeUnit.SECONDS)
+        return Flowable.interval(60, TimeUnit.SECONDS)
                        .flatMapIterable(tick -> aircraftPositionService.getAircraftPositions())
                        .map(aircraftPosition -> mapper.toJsonString(aircraftPosition))
                        .map(json -> {
