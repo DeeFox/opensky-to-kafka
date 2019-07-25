@@ -12,7 +12,7 @@ import java.util.Optional;
 @ApplicationScoped
 public class AircraftPositionService {
 
-    private static final String ICAO24_LIST = "ab1644,ab1640,88044b,7c6b2f,7c35e8";
+    private static final String ICAO24_LIST = "ab1644,ab1640,88044b,7c6b2f,7c35e8,aa8c39,7c6b2d,88044f,7c6b41";
 
     @Inject
     OpenskyService openskyService;
