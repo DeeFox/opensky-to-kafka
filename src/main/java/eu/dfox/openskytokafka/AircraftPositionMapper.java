@@ -11,7 +11,7 @@ public class AircraftPositionMapper {
 
     public AircraftPosition toAircraftPosition(StateVector stateVector) {
         AircraftPosition aircraftPosition = new AircraftPosition();
-        aircraftPosition.setCallsign(stateVector.getCallsign());
+        aircraftPosition.setCallsign(stateVector.getCallsign().trim());
         aircraftPosition.setHeading(stateVector.getHeading());
         aircraftPosition.setIcao24(stateVector.getIcao24());
         aircraftPosition.setLatitude(stateVector.getLatitude());

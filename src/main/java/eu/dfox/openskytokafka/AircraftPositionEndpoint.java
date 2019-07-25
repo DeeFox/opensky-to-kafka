@@ -21,15 +21,17 @@ public class AircraftPositionEndpoint {
     AircraftPositionMapper aircraftPositionMapper;
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response hello() {
 
         Optional<OpenSkyStates> states = openskyService.getFlights();
 
-        if (!states.isPresent()) {
+        if (!states.isPresent() || states.get().getStates() == null) {
             return Response.noContent().build();
         }
 
-        return Response.ok(aircraftPositionMapper.toAircraftPositions(states.get().getStates())).build();
+        return Response.ok(
+            aircraftPositionMapper.toAircraftPositions(states.get().getStates())
+        ).build();
     }
 }

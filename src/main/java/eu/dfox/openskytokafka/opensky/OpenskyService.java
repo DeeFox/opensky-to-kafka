@@ -20,11 +20,12 @@ public class OpenskyService {
 
     public Optional<OpenSkyStates> getFlights() {
         LOGGER.info("get flights");
-        String response = openskyClient.getStates("ab1644,ab1640,88044b,7c6b2f");
+        String response = openskyClient.getStates("ab1644,ab1640,88044b,7c6b2f,7c35e8");
         Optional<OpenSkyStates> states = Optional.empty();
         ObjectMapper mapper = new ObjectMapper();
         try {
-            states = Optional.of(mapper.readValue(response, OpenSkyStates.class));
+            LOGGER.info(response);
+            states = Optional.ofNullable(mapper.readValue(response, OpenSkyStates.class));
         } catch (IOException e) {
             LOGGER.fine(e.getMessage());
         }
