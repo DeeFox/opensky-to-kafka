@@ -18,9 +18,8 @@ public class OpenskyService {
     @RestClient
     OpenskyClient openskyClient;
 
-    public Optional<OpenSkyStates> getFlights() {
-        LOGGER.info("get flights");
-        String response = openskyClient.getStates("ab1644,ab1640,88044b,7c6b2f,7c35e8");
+    public Optional<OpenSkyStates> getFlights(String icao24List) {
+        String response = openskyClient.getStates(icao24List);
         Optional<OpenSkyStates> states = Optional.empty();
         ObjectMapper mapper = new ObjectMapper();
         try {
